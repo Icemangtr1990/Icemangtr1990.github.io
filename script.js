@@ -78,31 +78,24 @@ if ("IntersectionObserver" in window) {
 }
 
 // ===================== FORMULARIO DE CONTACTO =====================
+// El envío real lo gestiona Formsubmit (action del formulario).
+// Aquí solo damos feedback mientras se procesa; NO cancelamos el submit.
 const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
 
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nombre = document.getElementById("nombre").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const asunto = document.getElementById("asunto").value.trim();
-  const mensaje = document.getElementById("mensaje").value.trim();
-
-  if (!nombre || !email || !mensaje) {
-    formStatus.style.color = "#dc2626";
-    formStatus.textContent = "Por favor, rellena los campos obligatorios.";
-    return;
-  }
-
-  const subject = asunto || `Mensaje de ${nombre}`;
-  const body = `${mensaje}\n\n— ${nombre}\nEmail: ${email}`;
-  const mailto = `mailto:simeon.ivanov.stoev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  formStatus.style.color = "#059669";
-  formStatus.textContent = "¡Gracias! Se abrirá tu cliente de correo para enviar el mensaje.";
-  window.location.href = mailto;
-});
+if (contactForm) {
+  contactForm.addEventListener("submit", () => {
+    const button = contactForm.querySelector('button[type="submit"]');
+    const status = document.getElementById("formStatus");
+    if (button) {
+      button.disabled = true;
+      button.textContent = "Enviando…";
+    }
+    if (status) {
+      status.style.color = "#64748b";
+      status.textContent = "Enviando tu mensaje…";
+    }
+  });
+}
 
 // ===================== AÑO ACTUAL EN EL FOOTER =====================
 document.getElementById("year").textContent = new Date().getFullYear();

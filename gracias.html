@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mensaje enviado | Simeón Ivanov Stoev</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .thanks-page { min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .thanks-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 50px 40px; box-shadow: var(--shadow); max-width: 560px; }
+    .thanks-icon { width: 70px; height: 70px; margin: 0 auto 20px; border-radius: 50%; background: #dcfce7; color: #15803d; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .thanks-box h1 { font-size: 2rem; margin-bottom: 12px; }
+    .thanks-box p { color: var(--text-muted); margin-bottom: 26px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Simeón<span>Portfolio</span></a>
+    </div>
+  </header>
+
+  <main class="thanks-page">
+    <div class="container">
+      <div class="thanks-box">
+        <div class="thanks-icon">✓</div>
+        <h1>¡Mensaje enviado!</h1>
+        <p>Gracias por escribirme. Te responderé lo antes posible.</p>
+        <a href="index.html" class="btn btn-primary">Volver al portfolio</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Simeón Ivanov Stoev. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
