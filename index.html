@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simeón Ivanov Stoev | Desarrollador Web Junior</title>
   <meta name="description" content="Portfolio de Simeón Ivanov Stoev: proyectos, habilidades, experiencia y formación en desarrollo web y sistemas." />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://icemangtr1990.github.io/" />
+  <meta property="og:title" content="Simeón Ivanov Stoev | Desarrollador Web Junior" />
+  <meta property="og:description" content="Desarrollador Web Junior especializado en Java y Spring Boot. Proyectos, habilidades y contacto." />
+  <meta property="og:image" content="https://icemangtr1990.github.io/foto.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <!-- ============ HEADER / NAV ============ -->
   <header class="site-header">
     <div class="container header-inner">
@@ -29,7 +38,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="contenido">
     <!-- ============ HERO / INICIO ============ -->
     <section id="inicio" class="hero">
       <div class="container hero-inner">
@@ -45,6 +54,7 @@
           <div class="hero-actions">
             <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
             <a href="#contacto" class="btn btn-outline">Contactar</a>
+            <a href="CV-Simeon-Ivanov-Stoev.pdf" download class="btn btn-ghost">↓ Descargar CV</a>
           </div>
           <div class="social-links">
             <a href="https://github.com/Icemangtr1990" target="_blank" rel="noopener">GitHub</a>
@@ -127,27 +137,31 @@
 
             <h4>Funcionalidades</h4>
             <ul class="featured-list">
-              <li>Autenticación con roles <strong>usuario</strong> y <strong>admin</strong> (Spring Security).</li>
-              <li>Alta de recetas con ingredientes y cantidades añadidos dinámicamente.</li>
-              <li>Planificador que asigna recetas a usuarios y fechas, con consulta por usuario.</li>
-              <li>Lista de la compra generada a partir de las recetas planificadas.</li>
-              <li>Panel de administración para crear y eliminar usuarios y recetas.</li>
+              <li>Autenticación con roles <strong>usuario</strong> y <strong>admin</strong>, contraseñas <strong>BCrypt</strong> y login contra base de datos.</li>
+              <li>Gestión de recetas con ingredientes en <strong>JSON</strong> y panel de administración de usuarios.</li>
+              <li>Planificador que asigna recetas a usuarios y fechas (solo administradores).</li>
+              <li>Lista de la compra con ingredientes <strong>agrupados</strong>, filtro por fechas y versión imprimible.</li>
+              <li><strong>API REST</strong> con DTOs, paginación y documentación <strong>Swagger/OpenAPI</strong>.</li>
+              <li>Interfaz responsive con validación, mensajes de confirmación y estados vacíos.</li>
             </ul>
 
             <h4>Decisiones técnicas</h4>
             <ul class="featured-list">
-              <li>Arquitectura <strong>MVC</strong> con Thymeleaf y empaquetado <strong>WAR</strong> para Tomcat.</li>
-              <li>Consultas parametrizadas con <strong>PreparedStatement</strong> para evitar inyección SQL.</li>
-              <li>Ingredientes modelados como <strong>JSON</strong> y procesados con Jackson.</li>
-              <li>Consulta agregada con <strong>GROUP_CONCAT</strong> para mostrar los usuarios de cada receta.</li>
-              <li>Integridad referencial con claves foráneas y <code>ON DELETE CASCADE</code>.</li>
+              <li>Arquitectura por capas: entidades <strong>JPA</strong> → repositorios Spring Data → servicios → controladores.</li>
+              <li><strong>HikariCP</strong> como pool de conexiones y <strong>Flyway</strong> para migraciones versionadas.</li>
+              <li>Seguridad con <strong>BCrypt</strong>, CSRF, control por roles y Bean Validation; errores JSON en la API.</li>
+              <li><strong>17 tests</strong> con JUnit 5, H2 y MockMvc, cobertura JaCoCo e integración continua con GitHub Actions.</li>
+              <li><strong>Docker Compose</strong> para levantar la aplicación y MariaDB con un solo comando.</li>
+              <li>Frontend Thymeleaf con <em>fragments</em> compartidos y sistema de diseño propio.</li>
             </ul>
 
             <h4>Tecnologías</h4>
             <div class="tags">
               <span>Java 17</span><span>Spring Boot 3.4</span><span>Spring MVC</span>
-              <span>Spring Security</span><span>Spring JDBC</span><span>Thymeleaf</span>
-              <span>MySQL 8</span><span>Jackson</span><span>Maven</span><span>Bootstrap 5</span>
+              <span>Spring Security</span><span>Spring Data JPA</span><span>Hibernate</span>
+              <span>HikariCP</span><span>Flyway</span><span>Thymeleaf</span><span>MySQL 8</span>
+              <span>Jackson</span><span>Maven</span><span>Docker</span><span>GitHub Actions</span>
+              <span>JUnit 5</span><span>Swagger</span><span>Bootstrap 5</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/Icemangtr1990/FitMealApp" target="_blank" rel="noopener">Ver repositorio →</a>
@@ -157,8 +171,8 @@
         </article>
 
         <div class="project-highlights reveal">
-          <div class="highlight"><strong>13</strong><span>rutas y endpoints MVC</span></div>
-          <div class="highlight"><strong>3</strong><span>entidades y tablas</span></div>
+          <div class="highlight"><strong>18</strong><span>rutas MVC y API</span></div>
+          <div class="highlight"><strong>17</strong><span>tests automatizados</span></div>
           <div class="highlight"><strong>2</strong><span>roles (usuario / admin)</span></div>
         </div>
       </div>
@@ -205,8 +219,10 @@
             <h3>Frameworks y herramientas</h3>
             <div class="tag-cloud">
               <span>Spring Boot</span><span>Spring MVC</span><span>Spring Security</span>
-              <span>Spring JDBC</span><span>Thymeleaf</span><span>Jackson</span>
-              <span>MySQL</span><span>Maven</span><span>Bootstrap</span><span>Git</span><span>GitHub</span>
+              <span>Spring Data JPA</span><span>Hibernate</span><span>Flyway</span>
+              <span>Thymeleaf</span><span>Jackson</span><span>MySQL</span>
+              <span>Maven</span><span>Docker</span><span>GitHub Actions</span>
+              <span>JUnit 5</span><span>Bootstrap</span><span>Git</span><span>GitHub</span>
             </div>
             <h3>Otros</h3>
             <div class="tag-cloud">

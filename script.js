@@ -2,21 +2,43 @@
 const menuToggle = document.getElementById("menuToggle");
 const nav = document.getElementById("nav");
 
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("open");
-  menuToggle.classList.toggle("active");
-  const isOpen = nav.classList.contains("open");
+function cerrarMenu() {
+  nav.classList.remove("open");
+  menuToggle.classList.remove("active");
+  document.body.classList.remove("menu-open");
+  menuToggle.setAttribute("aria-expanded", "false");
+}
+
+menuToggle.addEventListener("click", (event) => {
+  event.stopPropagation();
+  const isOpen = nav.classList.toggle("open");
+  menuToggle.classList.toggle("active", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-// Cerrar el menú al pulsar un enlace
+// Cerrar al pulsar un enlace, fuera del menú o con Escape
 document.querySelectorAll(".nav-link").forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", cerrarMenu);
 });
+document.addEventListener("click", (event) => {
+  if (nav.classList.contains("open") && !nav.contains(event.target)) cerrarMenu();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") cerrarMenu();
+});
+
+// ===================== BARRA DE PROGRESO =====================
+const scrollProgress = document.getElementById("scrollProgress");
+
+function actualizarProgreso() {
+  const altura = document.documentElement.scrollHeight - window.innerHeight;
+  const porcentaje = altura > 0 ? (window.scrollY / altura) * 100 : 0;
+  scrollProgress.style.width = Math.min(porcentaje, 100) + "%";
+}
+window.addEventListener("scroll", actualizarProgreso, { passive: true });
+window.addEventListener("resize", actualizarProgreso);
+actualizarProgreso();
 
 // ===================== SCROLL SPY ( enlace activo ) =====================
 const sections = document.querySelectorAll("section[id]");
