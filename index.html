@@ -12,7 +12,10 @@
   <meta property="og:image" content="https://icemangtr1990.github.io/foto.png" />
   <meta name="twitter:card" content="summary" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -21,10 +24,6 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="logo">Simeón<span>Portfolio</span></a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
 
       <nav class="nav" id="nav">
         <a href="#inicio" class="nav-link active">Inicio</a>
@@ -35,6 +34,15 @@
         <a href="#formacion" class="nav-link">Formación</a>
         <a href="#contacto" class="nav-link">Contacto</a>
       </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar a modo oscuro" title="Cambiar tema">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -124,7 +132,23 @@
 
         <article class="featured-project reveal">
           <div class="featured-visual">
-            <span>FitMealApp</span>
+            <div class="mockup-window" aria-hidden="true">
+              <div class="mockup-bar"><span></span><span></span><span></span><em>fitmealapp</em></div>
+              <div class="mockup-body">
+                <div class="mockup-side">
+                  <b>🥗</b><i></i><i></i><i></i>
+                </div>
+                <div class="mockup-main">
+                  <div class="mockup-heading">Mi planificador</div>
+                  <div class="mockup-cards">
+                    <div class="mockup-card"><b>📖 Recetas</b><i></i><i></i></div>
+                    <div class="mockup-card"><b>🗓️ Semana</b><i></i><i></i></div>
+                    <div class="mockup-card"><b>🛒 Compra</b><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="mockup-title">FitMealApp</span>
             <small>Planificador de comidas · 2026</small>
           </div>
           <div class="featured-body">
@@ -338,7 +362,12 @@
           <div class="contact-info reveal">
             <div class="contact-item">
               <div class="contact-icon">✉</div>
-              <div><h3>Email</h3><p>simeon.ivanov.stoev@gmail.com</p></div>
+              <div>
+                <h3>Email</h3>
+                <p>simeon.ivanov.stoev@gmail.com</p>
+                <button type="button" class="copy-btn" id="copyEmail" data-email="simeon.ivanov.stoev@gmail.com"
+                        aria-label="Copiar dirección de email">⧉ Copiar email</button>
+              </div>
             </div>
             <div class="contact-item">
               <div class="contact-icon">✆</div>
